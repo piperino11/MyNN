@@ -3,7 +3,7 @@ import numpy as np
 import h5py
 import json
 import torch
-from pillow import imresize, imread
+from PIL import imresize, imread
 
 from tqdm import tqdm
 from collections import Counter
