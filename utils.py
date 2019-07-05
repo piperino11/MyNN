@@ -3,7 +3,7 @@ import numpy as np
 import h5py
 import json
 import torch
-import imageio
+from imageio import imresize, imread
 from imageio import imread, imresize
 from tqdm import tqdm
 from collections import Counter
