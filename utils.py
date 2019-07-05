@@ -3,7 +3,8 @@ import numpy as np
 import h5py
 import json
 import torch
-from scipy.misc import imread, imresize
+import imageio
+from imageio.misc import imread, imresize
 from tqdm import tqdm
 from collections import Counter
 from random import seed, choice, sample
