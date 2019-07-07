@@ -7,5 +7,5 @@ if __name__ == '__main__':
                        image_folder='../',
                        captions_per_image=5,
                        min_word_freq=5,
-                       output_folder='../output',
+                       output_folder='../',
                        max_len=50)
