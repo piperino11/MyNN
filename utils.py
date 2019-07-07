@@ -43,6 +43,7 @@ def create_input_files(dataset, karpathy_json_path, image_folder, captions_per_i
         captions = []
         for c in img['sentences']:
             # Update word frequency
+            #word freq è un counter..quindi la chiave è la parola, il valore è il numero di occorrenze contate.. con Update si aggiorna questo valore
             word_freq.update(c['tokens'])
             if len(c['tokens']) <= max_len:
                 captions.append(c['tokens'])
@@ -69,7 +70,9 @@ def create_input_files(dataset, karpathy_json_path, image_folder, captions_per_i
     assert len(test_image_paths) == len(test_image_captions)
 
     # Create word map
+    #si controllano tutte le occorrenze delle parole, se queste occorrono meno volte di min_word_freq preso in input vengono messe come UNK
     words = [w for w in word_freq.keys() if word_freq[w] > min_word_freq]
+    
     word_map = {k: v + 1 for v, k in enumerate(words)}
     word_map['<unk>'] = len(word_map) + 1
     word_map['<start>'] = len(word_map) + 1
@@ -77,6 +80,8 @@ def create_input_files(dataset, karpathy_json_path, image_folder, captions_per_i
     word_map['<pad>'] = 0
 
     # Create a base/root name for all output files
+    
+    #ES ... coco_captionUsatePerOgniImmagine_cap_per_img_FrequenzaUsata_min_word_freq
     base_filename = dataset + '_' + str(captions_per_image) + '_cap_per_img_' + str(min_word_freq) + '_min_word_freq'
 
     # Save word map to a JSON
